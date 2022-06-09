@@ -9,7 +9,7 @@ exports.auth = (req, res, next) => {
             .then(decodedToken => {
                 req.user = decodedToken;
                 res.locals.user = decodedToken;
-                console.log('auth', req.user)
+                // console.log('auth', req.user)
                 next();
             })
             .catch(error => {

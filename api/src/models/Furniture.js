@@ -34,6 +34,10 @@ const furnitureSchema = new mongoose.Schema({
     },
     material:{
         type: String,
+    },
+    _ownerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 })
 
