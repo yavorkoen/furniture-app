@@ -27,9 +27,7 @@ router.post('/login', async (req, res) => {
     let {email, password} = req.body;
     try{
         let user = await userService.login({email, password});
-        console.log("user", user);
         let accessToken = await userService.createToken(user);
-        console.log("token", accessToken);
         res.json({
             _id: user._id,
             email: user.email,
