@@ -30,7 +30,7 @@ exports.login = ({ email, password }) => {
 }
 
 exports.createToken = (user) => {
-    return jwt.sign({_id: user._id, email: user.email}, SECRET, {expiresIn: '2h'})
+    return jwt.sign({_id: user._id, email: user.email}, SECRET, {expiresIn: '1m'})
 }
 
 
