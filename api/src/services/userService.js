@@ -20,7 +20,6 @@ exports.login = ({ email, password }) => {
         })
         .then(([isValid, user]) => {
             if (isValid) {
-                console.log('login service', user)
                 return user;
             } else {
                 throw { message: 'Incorrect email or password' }

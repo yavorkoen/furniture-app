@@ -2,9 +2,7 @@ const router = require('express').Router();
 const catalogService = require('../services/catalogService.js');
 
 router.get('/', async(req, res) => {
-    console.log(req.headers['X-Authorization']);
     let allData = await catalogService.getAll();
-    console.log(allData);
     res.json(allData);
 })
 
