@@ -8,3 +8,5 @@ exports.getOne = (id) => Furniture.findById(id);
 
 exports.update = (id, data) => Furniture.findByIdAndUpdate(id, data);
 
+exports.deleteFurniture = (id) => Furniture.findByIdAndDelete(id);
+

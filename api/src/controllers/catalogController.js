@@ -19,12 +19,18 @@ router.get('/:furnitureId', async (req, res) => {
     res.json(furniture);
 });
 
-router.put('/:furnitureId', async (req, res) => {
+router.put('/:furnitureId',  async (req, res) => {
     let id = req.params.furnitureId;
     let updatedData = req.body;
     await catalogService.update(id, updatedData);
     res.json({ok: true});
-})
+});
+
+router.delete('/:furnitureId', async (req, res) => {
+    let id = req.params.furnitureId;
+    await catalogService.deleteFurniture(id);
+    res.json({ok: true});
+});
 
 
 module.exports = router;
