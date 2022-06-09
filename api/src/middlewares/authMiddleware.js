@@ -13,7 +13,7 @@ exports.auth = (req, res, next) => {
                 next();
             })
             .catch(error => {
-                res.status(401).res.json('You are not authorized');
+                res.status(401).json('You are not authorized');
             })
     } else {
         next();
@@ -24,7 +24,7 @@ exports.isAuth = (req, res, next) => {
     if (req.user) {
         next();
     } else {
-        res.status(401).res.json('You are not authorized');
+        res.status(401).json('You are not authorized');
     }
 }
 
