@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
 });
 
 app.use(routes);
+app.use((err, req, res, next) => {
+    res.status(err.statusCode || 400).json({message: err.message});
+    next();
+})
 
 initDatabase()
     .then(() => {

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const userService = require('../services/userService.js');
 
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
     console.log(req.body);
     let { email, password } = req.body;
     try {
@@ -15,10 +15,7 @@ router.post('/register', async (req, res) => {
             accessToken
         })
     } catch (error) {
-        res.json({
-            type: 'error',
-            message: error.message
-        });
+        next(error);
     }
 
 });
