@@ -9,7 +9,7 @@ const { auth } = require('./middlewares/authMiddleware.js');
 const app = express();
 
 corsConfig(app);
-
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(auth);
 

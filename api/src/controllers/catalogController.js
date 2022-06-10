@@ -1,15 +1,23 @@
 const router = require('express').Router();
 const catalogService = require('../services/catalogService.js');
 const { isAuth } = require('../middlewares/authMiddleware.js');
+const querystring = require('querystring');
 
 router.get('/', async (req, res) => {
-    let allData = await catalogService.getAll();
-    res.json(allData);
+    if(req.query.where) {
+        console.log(req.user);
+        let furniture = await catalogService.getOwn(req.user._id);
+        res.json(furniture);
+    }else{
+        let allData = await catalogService.getAll();
+        res.json(allData);
+    }
 });
 
 router.post('/', isAuth, (req, res) => {
     let furnitureData = req.body;
     catalogService.create({ ...furnitureData, _ownerId: req.user._id });
+
     res.json({ ok: true });
 });
 
@@ -30,6 +38,10 @@ router.delete('/:furnitureId', async (req, res) => {
     let id = req.params.furnitureId;
     await catalogService.deleteFurniture(id);
     res.json({ok: true});
+});
+
+router.get('/', async (req, res) => {
+
 });
 
 

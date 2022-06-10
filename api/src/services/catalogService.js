@@ -10,3 +10,5 @@ exports.update = (id, data) => Furniture.findByIdAndUpdate(id, data);
 
 exports.deleteFurniture = (id) => Furniture.findByIdAndDelete(id);
 
+
+exports.getOwn = (userId) => Furniture.find({_ownerId: userId})
