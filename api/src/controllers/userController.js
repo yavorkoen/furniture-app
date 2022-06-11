@@ -3,7 +3,6 @@ const userService = require('../services/userService.js');
 
 
 router.post('/register', async (req, res, next) => {
-    console.log(req.body);
     let { email, password } = req.body;
     try {
         let user = await userService.register({ email, password });
@@ -20,7 +19,7 @@ router.post('/register', async (req, res, next) => {
 
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
     let { email, password } = req.body;
     try {
         let user = await userService.login({ email, password });
@@ -31,10 +30,8 @@ router.post('/login', async (req, res) => {
             accessToken,
         })
     } catch (error) {
-        res.json({
-            type: 'error',
-            message: error.message
-        });
+        // console.log(error)
+        next(error);
     }
 });
 

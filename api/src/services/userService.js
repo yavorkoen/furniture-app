@@ -26,11 +26,12 @@ exports.login = ({ email, password }) => {
 
             }
         })
-        .catch(error => console.log(error));
+        // .catch(error => console.log(error));
 }
 
 exports.createToken = (user) => {
-    return jwt.sign({_id: user._id, email: user.email}, SECRET, {expiresIn: '1m'})
+    
+        return jwt.sign({_id: user._id, email: user.email}, SECRET, {expiresIn: '1m'}) 
 }
 
 

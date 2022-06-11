@@ -5,7 +5,6 @@ const querystring = require('querystring');
 
 router.get('/', async (req, res) => {
     if(req.query.where) {
-        console.log(req.user);
         let furniture = await catalogService.getOwn(req.user._id);
         res.json(furniture);
     }else{
